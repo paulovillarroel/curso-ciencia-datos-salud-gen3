@@ -3,7 +3,13 @@
 
 # Enteros
 x <- 10
+print(x)
 y <- -5
+print(y)
+
+x + y
+x_nuevo <- 23
+x_nuevo + y
 
 # Flotantes (decimales)
 z <- 3.14
@@ -12,13 +18,15 @@ z <- 3.14
 nombre <- "Juan"
 
 # Lógicos
-es_mayor = TRUE
-es_menor = FALSE
+es_mayor <- TRUE
+es_menor <- FALSE
 
 # Factores (útiles para variables categóricas)
 factor <- factor(c("A", "B", "C"))
+
 # Ajustar los niveles
 factor <- factor(c("A", "B", "C"), levels = c("C", "A", "B"))
+
 # Ejemplo con los dias de la semana
 dias_semana <- c(
   "Lunes",
@@ -29,8 +37,10 @@ dias_semana <- c(
   "Sábado",
   "Domingo"
 )
+
 # Ordenar dias
 sort(dias_semana)
+
 # Orden usando factores
 dias_ordenados <- factor(
   dias_semana,
@@ -46,10 +56,9 @@ dias_ordenados <- factor(
 )
 sort(dias_ordenados)
 
-
 # Tipos de datos compuestos
 # Listas
-lista <- c(1, 2.5, "Hola")
+lista <- c(1, 2.5, "Hola") # Mal creada. Se usa list()
 
 # DataFrames
 dataframe <- data.frame(nombre = nombre, edad = x)
@@ -63,6 +72,7 @@ mi_diccionario$profesion <- "Ingeniero"
 mi_diccionario$profesion <- NULL
 # Verificar si un elemento existe en el diccionario
 exists("edad", where = mi_diccionario)
+exists("peso", where = mi_diccionario)
 names(mi_diccionario)
 unlist(mi_diccionario)
 
