@@ -1,16 +1,16 @@
 # Instala los paquetes si no los tienes aún
-install.packages(c("tidyverse", "duckdb", "DBI"))
+install.packages(c("tidyverse", "RSQLite", "DBI"))
 
 # Carga las librerías necesarias
 library(tidyverse)
 library(DBI)
-library(duckdb)
+library(RSQLite)
 
 # Paso 1: Leer el archivo
 establecimientos <- read_csv2("raw-data/establecimientos_20250422.csv")
 
-# Paso 2: Crear o conectar a una base de datos DuckDB
-con <- dbConnect(duckdb::duckdb(), ":memory:")
+# Paso 2: Crear o conectar a una base de datos SQLite
+con <- dbConnect(RSQLite::SQLite(), "establecimientos.db")
 
 # Paso 3: Escribir los datos a una tabla
 dbWriteTable(con, "establecimientos_db", establecimientos)
