@@ -8,6 +8,12 @@ library(rio)
 # Paso 1: Leer el archivo
 establecimientos <- import("raw-data/establecimientos_20250422.csv")
 
+# Opción 2: Probar con readxl (para Excel)
+establecimientos <- readxl::read_excel(
+  "raw-data/establecimientos_20250422.xlsx",
+  sheet = "Hoja2"
+)
+
 establecimientos <- establecimientos |>
   janitor::clean_names()
 
