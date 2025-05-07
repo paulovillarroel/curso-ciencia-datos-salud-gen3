@@ -1,15 +1,37 @@
 # Instalar las librerías si no las tienes aún
-install.packages(c("tidyverse", "rio"))
+install.packages(c("tidyverse", "rio", "janitor"))
 
 # Cargar las librerías necesarias
 library(tidyverse)
 library(rio)
 
 # Paso 1: Leer el archivo
+
+# Importa datos desde un archivo CSV local usando la función `import` del paquete rio.
 establecimientos <- import("raw-data/establecimientos_20250422.csv")
 
+# Lee datos desde un archivo CSV alojado en una URL usando `read_csv2` del paquete readr.
+# `read_csv2` está diseñado para archivos CSV donde el delimitador es punto y coma (;) y el separador decimal es coma (,).
+establecimientos2 <- read_csv2(
+  "https://raw.githubusercontent.com/paulovillarroel/curso-ciencia-datos-salud-gen3/refs/heads/main/raw-data/establecimientos_20250422.csv"
+)
+
+# Lee datos desde un archivo CSV alojado en una URL usando `read_delim` del paquete readr.
+# Se especifica explícitamente que el delimitador es punto y coma (delim = ";").
+estab3 <- read_delim(
+  "https://raw.githubusercontent.com/paulovillarroel/curso-ciencia-datos-salud-gen3/refs/heads/main/raw-data/establecimientos_20250422.csv",
+  delim = ";"
+)
+
+# Importa datos desde un archivo Excel local usando la función `import` del paquete rio.
+estab4 <- import("raw-data/establecimientos_20250422.xlsx")
+
+# Lee datos desde un archivo Excel local usando la función `read_excel` del paquete readxl.
+estab5 <- readxl::read_excel("raw-data/establecimientos_20250422.xlsx")
+
 # Opción 2: Probar con readxl (para Excel)
-establecimientos <- readxl::read_excel(
+# Lee datos desde una hoja específica ("Hoja2") de un archivo Excel local usando `read_excel` del paquete readxl.
+estab6 <- readxl::read_excel(
   "raw-data/establecimientos_20250422.xlsx",
   sheet = "Hoja2"
 )
