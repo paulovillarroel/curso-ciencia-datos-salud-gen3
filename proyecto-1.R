@@ -10,10 +10,11 @@ rem20 <- rem20 |>
 arica <- rem20 |>
   filter(codigo_establecimiento == 101100) # ojo con el nombre
 
+unique(arica$establecimiento)
+
 unique(arica$area_funcional)
 
-rem20 |>
-  filter(codigo_establecimiento == 101100) |>
+arica |>
   group_by(area_funcional) |>
   summarise(total_egresos = sum(numero_egresos)) |>
   arrange(desc(total_egresos))
@@ -42,7 +43,7 @@ egresos_anio |>
 egresos_anio |>
   mutate(
     diferencia = total_egresos - lag(total_egresos),
-    mayor_media = ifelse(is.na(diferencia), NA, total_egresos > 3500)
+    mayor_media = ifelse(is.na(diferencia), NA, diferencia < 0)
   )
 
 egresos_anio |>
@@ -65,4 +66,6 @@ arica_obstetricia |>
 
 arica_obstetricia |>
   ggplot(aes(fecha, numero_egresos)) +
-  geom_line()
+  geom_line() +
+  geom_smooth() +
+  geom_point()
