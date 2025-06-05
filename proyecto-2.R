@@ -42,8 +42,19 @@ metrics <- raw_data |>
     )
   )
 
+# --- 2. Preparación de datos para gráficos ---
 
-# Función para filtrar la última semana de 2025
+# Datos de Influenza (Urgencia Hospitalaria) opción 1
+influenza_hosp_data <- raw_data |>
+  filter(
+    tipo_urgencia == "Urgencia Hospitalaria (UEH)",
+    causa == "Influenza (J09-J11)",
+    !(anio == 2025 &
+      semana_estadistica == max(semana_estadistica[anio == 2025]))
+  )
+
+
+# Función para filtrar la última semana de 2025 opción 2 (con función ad hoc)
 filter_last_2025_week <- function(df) {
   df |>
     filter(
@@ -52,8 +63,6 @@ filter_last_2025_week <- function(df) {
     )
 }
 
-# --- 2. Preparación de datos para gráficos ---
-
 # Datos de Influenza (Urgencia Hospitalaria)
 influenza_hosp_data <- raw_data |>
   filter(
@@ -61,6 +70,7 @@ influenza_hosp_data <- raw_data |>
     causa == "Influenza (J09-J11)"
   ) |>
   filter_last_2025_week()
+
 
 # Datos agregados por año y semana (para gráficos 1 y 3)
 flu_hospitals_agg <- influenza_hosp_data |>
