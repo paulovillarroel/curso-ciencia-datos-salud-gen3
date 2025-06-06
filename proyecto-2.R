@@ -12,6 +12,8 @@ url <- "https://datos.gob.cl/dataset/606ef5bb-11d1-475b-b69f-b980da5757f4/resour
 raw_data <- arrow::read_parquet(url) |>
   clean_names()
 
+# arrow::write_parquet(raw_data, "raw-data/at_urg_respiratorio_semanal_05062025.parquet")
+
 # Revisar el tamaño del objeto
 print(format(object.size(raw_data), units = "auto"))
 
@@ -75,7 +77,7 @@ influenza_hosp_data <- raw_data |>
 # Datos agregados por año y semana (para gráficos 1 y 3)
 flu_hospitals_agg <- influenza_hosp_data |>
   group_by(anio, semana_estadistica) |>
-  summarise(casos = sum(num_total), .groups = "drop")
+  summarise(casos = sum(num_total), .groups = "drop") # ungroup() para evitar problemas posteriores
 
 # Datos agregados por región, año y semana (para gráfico 2)
 flu_hospitals_region_agg <- influenza_hosp_data |>
@@ -96,16 +98,16 @@ flu_hospitals_2025 <- flu_hospitals_agg |>
   filter(anio == 2025)
 
 # Crear el gráfico simple para el año 2025
-ggplot(
-  data = flu_hospitals_2025,
-  aes(x = semana_estadistica, y = casos)
-) +
+flu_hospitals_2025 |>
+  ggplot(
+    aes(semana_estadistica, casos)
+  ) +
   geom_line(linewidth = 1, color = "#ff006e") +
   scale_x_continuous(
     breaks = seq(
       min(flu_hospitals_2025$semana_estadistica),
       max(flu_hospitals_2025$semana_estadistica),
-      by = 5
+      by = 3
     )
   ) +
   scale_y_continuous(labels = scales::comma) +
@@ -132,16 +134,16 @@ flu_hospitals_2024_2025 <- flu_hospitals_agg |>
 comparison_colors <- c("2024" = "#8338ec", "2025" = "#0096c7")
 
 # Crear el gráfico comparando 2024 y 2025
-ggplot(
-  data = flu_hospitals_2024_2025,
-  aes(x = semana_estadistica, y = casos, color = factor(anio)) # Mapear año al color
-) +
+flu_hospitals_2024_2025 |>
+  ggplot(
+    aes(x = semana_estadistica, y = casos, color = factor(anio)) # Mapear año al color
+  ) +
   geom_line(linewidth = 1) +
   scale_x_continuous(
     breaks = seq(
       min(flu_hospitals_2024_2025$semana_estadistica),
       max(flu_hospitals_2024_2025$semana_estadistica),
-      by = 5
+      by = 3
     )
   ) +
   scale_y_continuous(labels = scales::comma) +
