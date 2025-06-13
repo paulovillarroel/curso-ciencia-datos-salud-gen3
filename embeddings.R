@@ -9,7 +9,7 @@ resp <- generate("gemma3:4b", "Cuéntame un chiste sobre perros")
 resp_process(resp, "text")
 resp_process(resp, "df")
 
-generate("gemma3:4b", "Cuéntame un chiste sobre perros", output = "text", )
+generate("gemma3:4b", "Cuéntame un chiste sobre perros", output = "text")
 
 # embeddings
 cosine_similarity <- function(a, b) {
@@ -51,7 +51,6 @@ emb_base <- embed("nomic-embed-text:latest", "control de carcinoma hepático")
 emb_errada <- embed("nomic-embed-text:latest", "cntrol de karsinoma epatiko")
 
 cosine_similarity(emb_base, emb_errada)
-
 
 
 # Clasificación con embeddings
@@ -173,7 +172,7 @@ embeddings_no_cancer <- map(
 diagnosticos_emb <- diagnosticos |>
   mutate(embedding = map(diagnos, ~ embed("nomic-embed-text:latest", .x)))
 
-# Calcular similitud promedio
+# Calcular similitud de coseno promedio
 similitud_promedio <- function(embedding_obj, embeddings_grupo) {
   vec <- as.numeric(embedding_obj)
   sims <- map_dbl(embeddings_grupo, function(e) {
