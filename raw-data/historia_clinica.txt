@@ -1,0 +1,62 @@
+HISTORIA CLÍNICA - SERVICIO DE URGENCIA
+
+Fecha: 15/06/2025  
+Hora de ingreso: 03:42 AM  
+Lugar: Servicio de Urgencia - Hospital General
+
+DATOS DEL PACIENTE  
+Nombre: Juan Pérez González  
+Edad: 56 años  
+Sexo: Masculino  
+RUT: 12.345.678-9  
+Ocupación: Maestro de obras  
+Antecedentes médicos:  
+- Hipertensión arterial (HTA) diagnosticada hace 10 años  
+- Consumo crónico de AINES por lumbalgia  
+- Tabaquismo activo (20 cigarrillos/día por 30 años)  
+- Sin controles médicos recientes
+
+MOTIVO DE CONSULTA  
+“Dolor abdominal intenso y vómitos con sangre”
+
+ENFERMEDAD ACTUAL  
+Paciente refiere inicio de dolor epigástrico de tipo urente desde hace 48 horas, que ha ido aumentando en intensidad. Hace aproximadamente 2 horas presentó episodio de hematemesis (vómito de sangre roja con coágulos), asociado a mareos y sudoración. Niega deposiciones melénicas hasta el momento. Refiere náuseas persistentes y sensación de debilidad generalizada.
+
+EXAMEN FÍSICO  
+T°: 36.8°C  
+PA: 90/60 mmHg  
+FC: 112 lpm  
+FR: 22 rpm  
+SatO2: 95% (aire ambiente)
+
+General: paciente lúcido, pálido, sudoroso.  
+Abdomen: dolor a la palpación en epigastrio, sin signos de irritación peritoneal. Ruidos hidroaéreos presentes.  
+Piel y mucosas: palidez mucocutánea, sin ictericia.
+
+EXÁMENES SOLICITADOS  
+- Hemograma  
+- Pruebas hepáticas  
+- Urea y creatinina  
+- Grupo sanguíneo y Rh  
+- Gases venosos  
+- ECG  
+- Endoscopía digestiva alta (urgente)
+
+IMPRESIÓN DIAGNÓSTICA  
+1. Hemorragia digestiva alta (probable úlcera gástrica o duodenal)  
+2. Hipotensión secundaria a pérdida aguda de volumen  
+3. Dolor abdominal de probable origen gastroduodenal
+
+CONDUCTA INICIAL  
+- Monitorización continua  
+- Canalización de dos vías venosas periféricas  
+- Hidratación con cristaloides (suero fisiológico 0.9%)  
+- Omeprazol 80 mg EV en bolo, seguido de infusión continua  
+- Transfusión de glóbulos rojos si Hb < 8 g/dL  
+- Interconsulta a gastroenterología  
+- Preparación para endoscopía urgente
+
+FIRMA MÉDICO DE URGENCIA  
+Dra. Camila Soto R.  
+Médico Cirujano  
+RUN: 15.987.654-3
