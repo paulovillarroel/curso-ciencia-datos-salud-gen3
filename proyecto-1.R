@@ -1,11 +1,42 @@
 library(tidyverse)
 
 rem20 <- read_csv2(
-  "https://datos.gob.cl/dataset/a756323f-85ba-4759-87dc-f5d5e63868cc/resource/657cc933-eac8-4bfc-b004-c4d6dcd988a8/download/indicadores_rem20_20250425.csv"
+  "https://datos.gob.cl/dataset/a756323f-85ba-4759-87dc-f5d5e63868cc/resource/657cc933-eac8-4bfc-b004-c4d6dcd988a8/download/indicadores_rem20_20251025.csv"
 )
 
 rem20 <- rem20 |>
   janitor::clean_names()
+
+arica1 <- rem20 |>
+  filter(glosa_sss == "Arica")
+
+arica2 <- rem20 |>
+  filter(glosa_sss == "Arica y Parinacota")
+
+arica <- rem20 |>
+  filter(glosa_sss %in% c("Arica", "Arica y Parinacota"))
+
+arica3 <- rem20 |>
+  mutate(
+    arica_normalizado = ifelse(
+      glosa_sss %in% c("Arica", "Arica y Parinacota"),
+      "Arica",
+      "Otro"
+    )
+  ) |>
+  filter(arica_normalizado == "Arica")
+
+arica4 <- rem20 |>
+  mutate(
+    glosa_sss = ifelse(
+      glosa_sss %in% c("Arica", "Arica y Parinacota"),
+      "Arica",
+      "Otro"
+    )
+  ) |>
+  filter(glosa_sss == "Arica")
+
+
 
 arica <- rem20 |>
   filter(codigo_establecimiento == 101100) # ojo con el nombre
